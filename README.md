@@ -5,7 +5,7 @@
 # Description
 This is a Python application about Instagram.
 # Screenshot
- <img src="https://github.com/lavylipesh/Pesh_Gallery/blob/master/static/photos/gallery.png" width="1000">
+ <img src="" width="1000">
 
 # Installation Instruction
 * install pip
@@ -46,5 +46,5 @@ All test written for the application are passing.
 If you wish to get more information on my projects please contact me at beth13lilib@gmail.com
 
 # Licence Information
-[MIT LICENCE](https://github.com/lavylipesh/InstaClone/blob/master/LICENCE)
+[MIT LICENCE](https://github.com/lavylipesh/InstaClone/blob/master/LICENSE)
 Copyright (c) 2019 **Lilibeth Langat**
