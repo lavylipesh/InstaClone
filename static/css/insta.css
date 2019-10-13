@@ -1,3 +1,11 @@
 h1{
-    color: brown;
+    color: rgb(10, 10, 10);
+    font-family: 'Lobster Two', cursive;
+}
+#pesh{
+    font-family: 'Lobster', cursive;
+}
+.instaicon{
+    display: inline-block;
+    background-image: url(/static/images/instagram-new.png);
 }

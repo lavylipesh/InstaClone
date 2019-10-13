@@ -8,6 +8,7 @@ class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
     image_name = models.CharField(max_length = 60)
     image_caption = models.CharField(max_length=60)
+    profile = models.ForeignKey(name = 'profile')
     
     
    
