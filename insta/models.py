@@ -2,8 +2,14 @@ from django.db import models
 import datetime as dt
 
 class Profile(models.Model):
+    name = models.CharField(max_length=60)
     profile_pic = models.ImageField(upload_to='static/', blank = 'true')
     bio = models.TextField(default="")
+    
+    @classmethod
+    def search_by_name(cls,search_term):
+        insta = cls.objects.filter(name_icontains=search_term)
+        return insta
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
