@@ -6,12 +6,11 @@ class Profile(models.Model):
     bio = models.TextField(default="")
 
 class Image(models.Model):
-  
+    image = models.ImageField(upload_to = 'images/')
     image_name = models.CharField(max_length = 60)
     image_caption = models.CharField(max_length=60)
     profile = models.ForeignKey(Profile)
     pub_date = models.DateTimeField(auto_now_add=True)
-      image = models.ImageField(upload_to = 'images/')
     
    
    
