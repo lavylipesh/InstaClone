@@ -5,9 +5,10 @@ class Profile(models.Model):
     bio = models.TextField(default="")
 
 class Image(models.Model):
-    my_image = models.ImageField(upload_to = 'images/')
+    image = models.ImageField(upload_to = 'images/')
     image_name = models.CharField(max_length = 60)
-    image_description = models.CharField(max_length=60)
-    location = models.ForeignKey(Location)
-    category = models.ForeignKey(Category)
+    image_caption = models.CharField(max_length=60)
+    
+    
+   
    
