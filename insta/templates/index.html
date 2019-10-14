@@ -1,13 +1,13 @@
 {%extends 'base.html'%} 
 {% load bootstrap3 %}
-
+{% block contect %}
 <div class="container-fluid">
-
   <form  action="{%url 'index'%}" method="post">
     {%csrf_token%}
-
+ 
     {% bootstrap_form letterForm layout='inline' %}
     <input type="submit" value="create account">
   </form>
 
 </div>
+{% endblock %}
