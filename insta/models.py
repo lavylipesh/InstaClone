@@ -3,7 +3,7 @@ import datetime as dt
 
 class Profile(models.Model):
     name = models.CharField(max_length=60)
-    profile_pic = models.ImageField(upload_to='static/', blank = 'true')
+    profile_pic = models.ImageField(upload_to='static/')
     bio = models.TextField(default="")
     
     @classmethod
