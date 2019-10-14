@@ -1,0 +1,1 @@
+Hello {{name}} Welcome to Instagram. You will find amazing pictures of your friends.
