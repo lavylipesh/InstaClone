@@ -1,8 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import InstaForm
 
 def index(request):
-    return render(request,'index.html')
+    if request.method == 'POST':
+        form = InstaForm(request.POST)
+        if form.is_valid():
+            print('valid')
+        else:
+            form = InstaForm()
+
+    return render(request,'index.html',{"letterForm":form})
 
 def search_results(request):
     if  'profile' in request.GET and request.GET["profile"]:
