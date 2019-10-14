@@ -1,12 +1,16 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from .forms import InstaForm
 
 def index(request):
     if request.method == 'POST':
         form = InstaForm(request.POST)
         if form.is_valid():
-            print('valid')
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            recipient == InstaRecipiient(name=name,email=email)
+            recipient.save()
+            HttpResponseRedirect('index')
         else:
             form = InstaForm()
 
