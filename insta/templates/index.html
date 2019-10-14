@@ -1,13 +1,21 @@
 {%extends 'base.html'%} 
-{% load bootstrap3 %}
+{% load bootstrap4 %}
 {% block content %}
+
 <div class="container">
-<div class="card-columns">
+  <div class="row">
     {% for image in images %}
-    <div class="card" style="width: 23rem;" data-toggle="modal" data-target="#{{image.id}}">
-        <img src="{{image.image.url}}" height="300vh" class="card-img-top" alt="...">
-    </div>
-    </div>
-    </div>
+    <div class="card-text">
+        <div style="background-image: url({{image.image.url}});background-size: contain;position: sticky">
+            <img src="{{image.image.url}}" style="visibility: hidden;"  width="100%" height="10%"/>
+            <img src="" alt="">
+           
+        </div>
+        </div>
+        </div>
+        </div>
+   
+   
   {% endfor %}
 {% endblock %}
+
