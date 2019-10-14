@@ -16,7 +16,10 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 
+from accounts import views as accounts_views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^signup/$',accounts_views.signup,name='signup'),
     url(r'',include('insta.urls'))
 ]
