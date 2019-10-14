@@ -1,20 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import InstaForm
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/accounts/login/')
 def index(request):
-    if request.method == 'POST':
-        form = InstaForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            recipient == InstaRecipiient(name=name,email=email)
-            recipient.save()
-            HttpResponseRedirect('index')
-        else:
-            form = InstaForm()
-
-    return render(request,'index.html',{"letterForm":form})
+            return render(request,'index.html')
 
 def search_results(request):
     if  'profile' in request.GET and request.GET["profile"]:
