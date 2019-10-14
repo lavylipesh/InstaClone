@@ -1,11 +1,13 @@
 {%extends 'base.html'%} 
 {% load bootstrap3 %}
 {% block content %}
-
+<div class="container">
 <div class="card-columns">
     {% for image in images %}
     <div class="card" style="width: 23rem;" data-toggle="modal" data-target="#{{image.id}}">
-        <img src="{{image.my_image.url}}" height="300vh" class="card-img-top" alt="...">
+        <img src="{{image.image.url}}" height="300vh" class="card-img-top" alt="...">
+    </div>
+    </div>
     </div>
   {% endfor %}
 {% endblock %}
