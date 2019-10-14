@@ -2,10 +2,12 @@ from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from .forms import InstaForm
 from django.contrib.auth.decorators import login_required
+from .models import Image
 
 @login_required(login_url='/accounts/login/')
 def index(request):
-            return render(request,'index.html')
+    images = Image.objects.all()
+    return render(request,'index.html',{'images':images})
 
 def search_results(request):
     if  'profile' in request.GET and request.GET["profile"]:
