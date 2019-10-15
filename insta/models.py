@@ -1,24 +1,24 @@
 from django.db import models
-import datetime as dt
+from django.contrib.auth.models import User
+
 
 class Profile(models.Model):
-    name = models.CharField(max_length=60)
-    profile_pic = models.ImageField(upload_to='images/')
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    profile_pic = models.ImageField(default='default.jpg', upload_to='images/')
     bio = models.TextField(default="")
-    
+
+    def __str__(self):
+        return f'{self.user}Profile'
     @classmethod
-    def search_by_name(cls,search_term):
-        insta = cls.objects.filter(name_icontains=search_term)
-        return insta
+    def search_by_user(cls,search_term):
+      user = cls.objects.filter(user__username__icontains=search_term)
+      return user   
+    
+  
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
     image_name = models.CharField(max_length = 60)
     image_caption = models.CharField(max_length=60)
     profile = models.ForeignKey(Profile)
-    pub_date = models.DateTimeField(auto_now_add=True)
-    
-class InstaRecipients(models.Model):
-    name = models.CharField(max_length = 30)
-    email = models.EmailField()  
-   
+       
