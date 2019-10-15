@@ -8,7 +8,7 @@ class Profile(models.Model):
     bio = models.TextField(default="")
 
     def __str__(self):
-        return f'{self.user}Profile'
+        return f'{self.user.username}Profile'
     @classmethod
     def search_by_user(cls,search_term):
       user = cls.objects.filter(user__username__icontains=search_term)
