@@ -26,11 +26,8 @@ This is a Python application about Instagram.
 
 # User stories
 **A user is able to:**
-1. View different photos of their interest.
-2. Click on a single photo to expand it and also view the details of the photo. 
-3. Search for different categories of photos. 
-4. Copy a link to the photo to share with friends and family.
-5. View photos based on the location they were taken.
+
+
 # Known Bugs
 A user is unable to search photos by location
 # Tests
