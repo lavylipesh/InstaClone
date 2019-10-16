@@ -1,5 +1,5 @@
 from django import forms
 
-class InstaForm(forms.Form):
-    name = forms.CharField(label='Name',max_length=30)
-    email = forms.EmailField(label='Email')
+class CommentForm(forms.Form):
+    comment = forms.CharField(label='Comment',max_length=80)
+    

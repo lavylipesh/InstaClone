@@ -14,11 +14,18 @@ class Profile(models.Model):
       user = cls.objects.filter(user__username__icontains=search_term)
       return user   
     
-  
+
+class Comment(models.Model):
+    comment = models.CharField(max_length = 80) 
+    
+    def __str__(self):
+        return self.comment
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'images/')
     image_name = models.CharField(max_length = 60)
     image_caption = models.CharField(max_length=60)
     profile = models.ForeignKey(Profile)
-       
+    comment = models.ForeignKey(Comment)
+    likes = models.ManyToManyField(User, related_name= 'likes', blank = True)
+
