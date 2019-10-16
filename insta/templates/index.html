@@ -1,18 +1,35 @@
 {%extends 'base.html'%} 
-{% load bootstrap4 %}
+{% load bootstrap3 %}
 {% block content %}
 {% for image in images %}
 <div class="container">
 <div class="card" style="width:700px"> 
+    
+  <h1><img  class="rounded-circle account-img" src="{{user.profile.profile_pic.url}}" alt="" height="100px" width="100px">{{user.username}}</h1>
  
   <img class="card-img-top" src="{{image.image.url}}" alt="Card image"><br>
   <div class="card-body">
     <h4 class="card-title"></h4>
   
-  <img src="/static/images/hapa.png"  height="90px" width="90px" alt="">13 likes
+  
+  <a class='info' href="{% url 'like' image.id %}">
+  <img src="/static/images/heart-128.png"  height="90px" width="90px" alt="">
+   
+</a><span style="font-size:25px;">{{image.likes.count}}</span>
+
+  
   <img src="/static/images/message.png" height="90px" width="90px" alt="">
-  <p class="card-text"><strong>Add comment...</strong></p>
-  </div>
+  <form  action="{%url 'index'%}" method="post">
+    {%csrf_token%}
+
+    {% for field in form %}
+    {% bootstrap_field field %}
+    {% endfor %}
+    
+
+    
+  </form>
+</div>
 </div>
 </div>
  

@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     
     'insta.apps.InstaConfig',
     'bootstrap4',
+    'crispy_forms',
     'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
