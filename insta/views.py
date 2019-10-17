@@ -1,14 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,HttpResponseRedirect
-from .forms import CommentForm
+from .forms import MyCommentForm,ImageForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Image
+from .models import Profile,Image,CommentForm
 from django.views.generic import RedirectView
 
-@login_required(login_url='/accounts/register/')
+@login_required(login_url='/accounts/login/')
 def index(request):
     images = Image.objects.all()
-    return render(request,'index.html',{'images':images})
+    form = MyCommentForm()
+    comment = CommentForm.objects.all()
+
+    return render(request,'index.html',{'MyCommentForm':form,'images':images})
 
 def search_results(request):
     if  'user' in request.GET and request.GET["user"]:
@@ -22,7 +25,7 @@ def search_results(request):
         return render(request, 'search.html',{"message":message})
 
 def profile(request):
-    current_user=request.user
+    current_user=request.user   
     image=Image.objects.filter(profile_id=current_user.id)
     return render(request,'profile.html',{'image':image})
 
@@ -45,13 +48,39 @@ def like(request,image_id):
 def total_likes(self):
       self.likes.count()
 
-def comment(request):
+def comment(request,pk):
+    
     if request.method == 'POST':
-        Form = CommentForm(request.POST)
+        form = MyCommentForm(request.POST)
         if form.is_valid():
-            comment = form.cleaned_data['your_comment']
+            # comment = form.cleaned_data['your_comment']
+            image = Image.objects.get(pk=pk)
+            user = request.user
+            # recipient = CommentForm(comment = comment)
+            comment = form.save(commit=False)
+            comment.image = image
+            comment.user = user
             comment.save()
-            HttpResponseRedirect('index')
+            return redirect('index')
     else:
-        form = CommentForm()
-    return render(request,'index.html',{"letterform":form})
+        print("error")
+        return redirect('index')
+    # return render(request,'index.html',{"form":form})
+
+@login_required(login_url='/accounts/login/')
+def upload(request):
+    
+    if request.method == 'POST':
+        form = ImageForm(request.POST,request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            image_name = form.cleaned_data['image_name']
+            image_caption = form.cleaned_data['image_caption']
+            user = request.user
+            saveImage = Image(image=image,image_name=image_name,image_caption=image_caption,profile=user)
+            saveImage.save()
+            return redirect('index')
+    else:
+        form = ImageForm()
+        return render(request,'image.html',{'form':form})
+            
