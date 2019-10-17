@@ -19,19 +19,21 @@
 
   
   <img src="/static/images/message.png" height="90px" width="90px" alt="">
-  <form  action="{%url 'index'%}" method="post">
+  <p><strong>Add a comment...</strong></p>
+  <form  action="{%url 'uploadcomments' image.id%}" method="post">
     {%csrf_token%}
-
-    {% for field in form %}
-    {% bootstrap_field field %}
-    {% endfor %}
-    
-
-    
+    {{MyCommentForm}}
   </form>
+  {% for comment in image.all_comments %}
+<p>{{comment.comment}}</p>
+ 
+  {%  endfor %}
+ 
+
 </div>
 </div>
 </div>
+
  
 {% endfor %}
 {% endblock %}
