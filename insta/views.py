@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile,Image,CommentForm
 from django.views.generic import RedirectView
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/register/')
 def index(request):
     images = Image.objects.all()
     form = MyCommentForm()
