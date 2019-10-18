@@ -3,7 +3,7 @@
 {% block content %}
 {% for image in images %}
 <div class="container">
-<div class="card" style="width:700px"> 
+<div class="card" style="width:800px"> 
     
   <h1><img  class="rounded-circle account-img" src="{{user.profile.profile_pic.url}}" alt="" height="100px" width="100px">{{user.username}}</h1>
  
@@ -19,7 +19,9 @@
 
   
   <img src="/static/images/message.png" height="90px" width="90px" alt="">
-  <p><strong>Add a comment...</strong></p>
+  <div class="card">
+    <div class="card-body">
+      <p><strong>Add a comment...</strong></p>
   <form  action="{%url 'uploadcomments' image.id%}" method="post">
     {%csrf_token%}
     {{MyCommentForm}}
@@ -29,7 +31,8 @@
  
   {%  endfor %}
  
-
+</div>  
+</div>
 </div>
 </div>
 </div>

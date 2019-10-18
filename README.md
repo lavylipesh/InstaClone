@@ -4,8 +4,7 @@
 [Lilibeth Langat](https://github.com/lavylipesh/InstaClone)
 # Description
 This is a Python application about Instagram.
-# Screenshot
- <img src="" width="1000">
+
 
 # Installation Instruction
 * install pip
