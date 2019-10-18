@@ -32,8 +32,8 @@ This is a Python application about Instagram.
 5. Like a picture and leave a comment on it.
 
 # Known Bugs
-A user is unable to comment
-A user is unable to like
+A user cannot see their profile.
+
 # Tests
 All test written for the application are passing.
 
